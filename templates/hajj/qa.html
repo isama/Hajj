@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Supervisor</title>
+    {% load staticfiles %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'jqwidgets/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jqwidgets/styles/jqx.base.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jqwidgets/styles/jqx.bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jqwidgets/styles/jqx.metro.css' %}"/>
+
+    <!-- Javascript Files -->
+    <script type="text/javascript" src="{% static 'scripts/jquery-1.11.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxcore.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxnotification.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxbuttons.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxinput.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxexpander.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/hajj.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/qa.js' %}"></script>
+
+</head>
+
+<body>
+
+<div align="center">
+
+    <div align="right" style="margin-top: 40px; margin-bottom: 5px; width: 604px;">
+        <input id="sign_out" type="button" value="تسجيل الخروج">
+    </div>
+    <div id="taskHeader">
+        <div style="font-size: 15px; font-weight: bold; height: 30px; padding-top: 5px; width: 580px;">
+            <div style="float: left;">&nbsp;&nbsp; قائمة المهام النشطة</div>
+            <div style="float: right">المستخدم: {{ activities.user }}</div>
+            <div style="clear: both"></div>
+        </div>
+        <div>
+            <br/>
+            {% if activities %}
+                {% for act in activities.list %}
+                    <div style="margin: 5px;">
+                        <div style="float: left">
+                            <input id="comment-btn-{{ act.activity_id }}" type="button" value="تعليق" class="normal-button" data-content="{{ act.activity_id }}">
+                        </div>
+                        <div style="float: left; margin-left: 4px;">
+                            <input data-content="{{ act.status }}" type="button" class="activity-status" id="status-{{ act.activity_id }}">
+                        </div>
+                        <div style="float: left; margin-left: 4px;">
+                            <input type="button" value="{{ act.activity.supervisor }}" class="toggle-supervisor">
+                        </div>
+                        <div style="float: left; margin-left: 4px;">
+                            <input type="button" value="{{ act.activity.name }}" class="toggle-task">
+                        </div>
+                        <div style="clear: both"></div>
+                        <div align="left" style="display: none" class="comment-div" id="comment-div-{{ act.activity_id }}">
+                            <textarea class="comment-text" rows="5" id="comment-text-{{ act.activity_id }}"></textarea>
+                            <br/>
+                            <div align="right">
+                                <input type="button" value="حفظ" class="comment-button" data-content="{{ act.activity_id }}">
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <br/>
+        </div>
+    </div>
+
+</div>
+
+<div id="errMessageNotification">
+    <div id="errMessageNotificationText">
+
+    </div>
+</div>
+
+<div id="infoMessageNotification">
+    <div id="infoMessageNotificationText">
+
+    </div>
+</div>
+
+</body>
+</html>

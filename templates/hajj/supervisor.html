@@ -1,0 +1,37 @@
+<div id="supHeader" style="margin-bottom: 10px">
+    <div style="font-size: 15px; font-weight: bold; height: 30px; padding-top: 5px; width: 580px;">
+        {{ activities.s }}
+    </div>
+    <div>
+        <br/>
+        {% if activities %}
+            {% for act in activities.list %}
+                <div style="margin: 5px;">
+                    <div style="float: left">
+                        <input id="sup-comment-btn-{{ act.activity_id }}" type="button" value="تعليق"
+                               class="sup-normal-button"
+                               data-content="{{ act.activity_id }}">
+                    </div>
+                    <div style="float: left; margin-left: 4px;">
+                        <input data-content="{{ act.status }}" type="button" class="sup-activity-status"
+                               id="status-{{ act.activity_id }}">
+                    </div>
+                    <div style="float: left; margin-left: 4px;">
+                        <input type="button" value="{{ act.activity.name }}" class="sup-toggle-task">
+                    </div>
+                    <div style="clear: both"></div>
+                    <div align="left" style="display: none" class="sup-comment-div" id="sup-comment-div-{{ act.activity_id }}">
+                        <textarea readonly="readonly"
+                              class="sup-comment-text" rows="5" id="sup-comment-text-{{ act.activity_id }}">"{{ act.comment }}"
+                        </textarea>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <br/>
+    </div>
+
+</div>
+
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'scripts/supervisor.js' %}"></script>

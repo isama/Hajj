@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Officer's View</title>
+    {% load staticfiles %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'jqwidgets/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jqwidgets/styles/jqx.base.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jqwidgets/styles/jqx.bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jqwidgets/styles/jqx.metro.css' %}"/>
+
+    <!-- Javascript Files -->
+    <script type="text/javascript" src="{% static 'scripts/jquery-1.11.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxcore.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxnotification.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxbuttons.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxinput.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxexpander.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/hajj.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/office.js' %}"></script>
+
+</head>
+
+<body>
+
+<div align="center">
+
+    <div align="right" style="margin-top: 40px; margin-bottom: 5px; width: 604px;">
+        <input id="sign_out" type="button" value="تسجيل الخروج">
+    </div>
+    <div id="campHeader">
+        <div style="font-size: 15px; font-weight: bold; height: 30px; padding-top: 5px; width: 580px;">
+            <div style="float: left;">&nbsp;&nbsp;ملخص شامل</div>
+            <div style="float: right">المستخدم: {{ activities.user }}</div>
+            <div style="clear: both"></div>
+        </div>
+        <div>
+            <br/>
+
+                <!-- Row loop -->
+                {% for row in activities.list %}
+                    <div style="margin-bottom: 5px">
+                        <!-- Column loop -->
+                        {% for col in row %}
+                        <div style="float: left; width: 200px;">
+                            <div>
+                                <input type="button" class="camp-name" value="{{ col.camp }}"
+                                       data-count="{{ col.count }}" />
+                            </div>
+                            <div>
+                                <input type="button" style="font-size: 20px; font-weight: bold"
+                                       class="camp-task-count" value="{{ col.count }}"
+                                       data-content="{{ col.user }}" data-count="{{ col.count }}" name="{{ col.camp }}" />
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div style="clear: both"></div>
+
+                    </div>
+                {% endfor %}
+            <br/>
+        </div>
+    </div>
+
+    <div id="campDetail">
+
+    </div>
+
+    <div id="supervisorDetail">
+
+    </div>
+
+</div>
+
+<div id="errMessageNotification">
+    <div id="errMessageNotificationText">
+
+    </div>
+</div>
+
+<div id="infoMessageNotification">
+    <div id="infoMessageNotificationText">
+
+    </div>
+</div>
+
+</body>
+</html>

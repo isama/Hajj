@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hajj | Sign In</title>
+    {% load staticfiles %}
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'jqwidgets/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jqwidgets/styles/jqx.base.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jqwidgets/styles/jqx.bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'jqwidgets/styles/jqx.metro.css' %}"/>
+
+    <!-- Javascript Files -->
+    <script type="text/javascript" src="{% static 'scripts/jquery-1.11.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxcore.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxnotification.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxbuttons.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxinput.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxpasswordinput.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxexpander.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jqwidgets/jqxvalidator.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/hajj.js' %}"></script>
+    <script type="text/javascript" src="{% static 'scripts/login.js' %}"></script>
+
+</head>
+
+<body>
+
+<div align="center">
+
+    <div id="sign_in" style="margin-top: 70px;">
+        <div style="font-size: 15px; font-weight: bold; height: 30px; padding-top: 5px;">
+            &nbsp;&nbsp;الدخول إلى النظام
+        </div>
+        <div>
+            <form id="form" style="overflow: hidden; margin: 20px;">
+                <br/>
+                <div>
+                    <input id="username" style="padding-left: 5px;">
+                </div> <br/>
+                <div>
+                    <input id="password" type="password" style="padding-left: 5px;">
+                </div> <br/>
+                <div>
+                    <input id="submit" type="button" value="تسجيل الدخول">
+                </div> <br/>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div id="errMessageNotification">
+    <div id="errMessageNotificationText">
+
+    </div>
+</div>
+
+<div id="infoMessageNotification">
+    <div id="infoMessageNotificationText">
+
+    </div>
+</div>
+
+</body>
+</html>

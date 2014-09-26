@@ -1,0 +1,35 @@
+<div id="taskHeader">
+    <div style="font-size: 15px; font-weight: bold; height: 30px; padding-top: 5px; width: 580px;">
+        <div>&nbsp;&nbsp;{{ activities.camp }} التفاصيل</div>
+    </div>
+    <div>
+        <br/>
+
+        <!-- Row loop -->
+        {% for row in activities.list %}
+            <div style="margin-bottom: 5px">
+                <!-- Column loop -->
+                {% for col in row %}
+                    <div style="float: left; width: 200px;">
+                        <div>
+                            <input type="button" class="supervisor-name" value="{{ col.supervisor }}"
+                                   data-count="{{ col.count }}"/>
+                        </div>
+                        <div>
+                            <input type="button" style="font-size: 20px; font-weight: bold"
+                                   class="task-count" value="{{ col.count }}"
+                                   data-content="{{ col.supervisor }}" data-count="{{ col.count }}"
+                                   data-parent="{{ col.user }}"/>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div style="clear: both"></div>
+
+            </div>
+        {% endfor %}
+        <br/>
+    </div>
+</div>
+
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'scripts/camp.js' %}"></script>
